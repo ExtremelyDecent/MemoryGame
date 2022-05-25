@@ -41,6 +41,17 @@ function shuffle(array) {
 }
 
 let shuffledColors = shuffle(COLORS);
+//this function checks to see if the game is over
+function isGameOver(){
+  const tiles = [];
+
+  
+  console.log(gameContainer);
+  // for(let i = 0; i<gameContainer.classList.length; i++){
+  //   tiles[i] = gameContainer.
+  // }
+  
+}
 
 // this function loops over the array of colors
 // it creates a new div and gives it a class with the value of the color
@@ -64,41 +75,40 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   // you can use event.target to see which element was clicked
-  console.log("you just clicked", event.target);
-  console.log(clickCounter);
+  //console.log("you just clicked", event.target);
+  //console.log(clickCounter);
   
 
-    if (wait === false){
-      if (clickCounter === 0 && event.target.style.backgroundColor !== event.target.classList.value){ // first flip
-        firstClick = event.target;
-        firstClick.style.backgroundColor = firstClick.classList.value;
-        clickCounter++;
-      }
-      else if(clickCounter === 1 && event.target.style.backgroundColor !== event.target.classList.value && !wait){ //second flip check and check for matching background aka flipped
-          wait = true;
-          secondClick = event.target;
-          secondClick.style.backgroundColor = secondClick.classList.value;
-          if(secondClick.classList.value !== firstClick.classList.value){ //wrong guess
-            
-            setTimeout(function(){
-              firstClick.style.backgroundColor = 'white';
-              secondClick.style.backgroundColor = 'white';
-              wait = false;
-            },1000);
-            clickCounter = 0;
-          }
-          else{
-            wait=false;
-            clickCounter = 0;
-          }
-          
-        }
+  if (wait === false){
+    if (clickCounter === 0 && event.target.style.backgroundColor !== event.target.classList.value){ // first flip
+      firstClick = event.target;
+      firstClick.style.backgroundColor = firstClick.classList.value;
+      clickCounter++;
+    }
+    else if(clickCounter === 1 && event.target.style.backgroundColor !== event.target.classList.value && !wait){ //second flip check and check for matching background aka flipped
+      wait = true;
+      secondClick = event.target;
+      secondClick.style.backgroundColor = secondClick.classList.value;
+      if(secondClick.classList.value !== firstClick.classList.value){ //wrong guess
+        
+        setTimeout(function(){
+          firstClick.style.backgroundColor = 'white';
+          secondClick.style.backgroundColor = 'white';
+          wait = false;
+        },1000);
+        clickCounter = 0;
       }
       else{
-        console.log("YOU MUST WAIT!");
+        wait=false;
+        clickCounter = 0;
       }
-  
+    }
   }
+  else{
+    console.log("YOU MUST WAIT!");
+  }
+  isGameOver();
+}
   
 
 
